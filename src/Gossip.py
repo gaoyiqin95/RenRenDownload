@@ -53,6 +53,8 @@ class Gossip:
             f.write('quantity of gossips: ' + str(self.gossipCount) + '\n')
             f.write(config.gap)
             for item in self.gossipContent:
+                print(item.get('time','') + ' ' + item.get('guestName'))
+                print(item.get('filterdBody',''))
                 line = 'id: ' + item['id'] + '\n\n'
                 line += 'time: ' + item['time'] + '\n\n'
                 line += 'guestId: ' + item['guestId'] + '\n\n'

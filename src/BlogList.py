@@ -19,7 +19,7 @@ class BlogList:
         
     def getBlogListUrl(self, categoryId=0, pageNo=0):
         data = {
-                'categoryId': categoryId,
+                #'categoryId': categoryId,
                 'curpage': pageNo,
                 }
         return self.url + urllib.urlencode(data)
@@ -66,7 +66,8 @@ class BlogList:
         d1 = datetime.datetime.now()
         for item in self.bloglist:
             blogID = str(item['id'])
-            filename = config.PATH + '/' + self.ownerID + '/' + config.BLOGSPATH + '/' + item['createTime'] + '  ' + item['category'] + '  ' + item['title'] + '.markdown' 
+            name = item['title'].replace('/', '__')
+            filename = config.PATH + '/' + self.ownerID + '/' + config.BLOGSPATH + '/' + item['createTime'] + '  ' + item['category'] + '  ' + name + '.markdown'
             blog = Blog(self.userID,self.spider,blogID,self.ownerID,filename,item)
             blog.work()
         d2 = datetime.datetime.now()

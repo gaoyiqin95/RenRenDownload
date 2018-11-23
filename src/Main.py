@@ -16,6 +16,9 @@ from RepoMysql import RepoMysql
 import config
 import Common
 import datetime
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def checkPaths(ownerID):
     Common.checkPath(config.PATH)
@@ -23,32 +26,41 @@ def checkPaths(ownerID):
     Common.checkPath(config.PATH + '/' + ownerID + '/' + config.BLOGSPATH)
     Common.checkPath(config.PATH + '/' + ownerID + '/' + config.ALBUMLISTPATH)
                    
-def Main():
-    d1 = datetime.datetime.now()
-    
-    lonelyMan = RenRenSpider()
-    lonelyMan.login()
-    userID = lonelyMan.getUserID()
-    
-    checkPaths(userID)
-    checkPaths(ownerID=config.ownerID)
+def work(userID, lonelyMan, i):
+
+    checkPaths(ownerID=config.ownerID[i])
  
-    albumList = AlbumList(userID,lonelyMan,ownerID=config.ownerID)
+    albumList = AlbumList(userID,lonelyMan,ownerID=config.ownerID[i])
     albumList.work()
        
-    status = Status(userID,lonelyMan,config.ownerID)
+    status = Status(userID,lonelyMan,config.ownerID[i])
     status.work()
  
-    bloglist = BlogList(userID,lonelyMan,config.ownerID)
+    bloglist = BlogList(userID,lonelyMan,config.ownerID[i])
     bloglist.work()
    
-    gossip = Gossip(userID,lonelyMan,config.ownerID)
+    gossip = Gossip(userID,lonelyMan,config.ownerID[i])
     gossip.work()
         
     repo = RepoMysql(userID,lonelyMan)
     repo.work()
     
+
+
+def Main():
+    d1 = datetime.datetime.now()
+
+    lonelyMan = RenRenSpider()
+    lonelyMan.login()
+    userID = lonelyMan.getUserID()
+
+    checkPaths(userID)
+
+    for index in range(len(config.ownerID)):
+        work(userID, lonelyMan, index)
+
     d2 = datetime.datetime.now()
     print 'all have been done, time: ', d2 - d1
-    
+
+
 Main()

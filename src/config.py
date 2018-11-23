@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
- 
 EMAIL = 'email'
 PASSWORD = 'password'
 ownerID = 'ownerID'
@@ -17,7 +16,7 @@ dbConnectInfo = {
 #                    'charset':'utf8'
                 }
 
-PATH = 'data'
+PATH = '../../data'
 BLOGSPATH = 'blogs'
 ALBUMLISTPATH = 'albumlist'
 

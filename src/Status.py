@@ -51,6 +51,8 @@ class Status:
             f.write('quantity of status:' + str(self.statusCount) + '\n')
             f.write(config.gap)
             for item in self.status:
+                print(item.get('dtime',''))
+                print(item.get('content',''))
                 line = u'**ID号:** ' + str(item['id']) + '\n'
                 line += u'**发表时间:** ' + item['dtime'] + '\n'
                 line += u'**评论数:** ' + str(item['comment_count']) + '\n\n'

@@ -30,17 +30,17 @@ class Comment:
     def setContent(self,content):
 #         print content
         dictinfo = json.loads(content)
-        for item in dictinfo['comments']:
+        for item in dictinfo.get('comments',{}):
             temp = {}
-            temp['type'] = item['type']
-            temp['id'] = item['id']
-            temp['time'] = item['time']
-            temp['authorName'] = item['authorName']
-            temp['authorId'] = item['authorId']
-            temp['content'] = item['content']
+            temp['type'] = item.get('type','')
+            temp['id'] = item.get('id','')
+            temp['time'] = item.get('time','')
+            temp['authorName'] = item.get('authorName','')
+            temp['authorId'] = item.get('authorId','')
+            temp['content'] = item.get('content','')
             self.comments.append(temp)
 #         print dictinfo['hasMore'], len(self.comments)
-        return (dictinfo['hasMore'], dictinfo['nextOffset'])
+        return (dictinfo.get('hasMore',False), dictinfo.get('nextOffset',0))
             
         
     def saveContent(self):
