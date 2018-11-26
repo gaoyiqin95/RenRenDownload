@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 EMAIL = 'email'
 PASSWORD = 'password'
-ownerID = 'ownerID'
+ownerID = ['ownerID1', 'ownerID2', '...']
 
 cookieFile = 'cookie.txt'
 dbFile = '/tmp/people.txt'
@@ -23,7 +23,7 @@ ALBUMLISTPATH = 'albumlist'
 LOGINURL = r'http://www.renren.com/PLogin.do'
 ICODEURL = r'http://icode.renren.com/getcode.do?t=login&rnd=Math.random()'
 # loginUrl = 'http://www.renren.com/ajaxLogin/login?1=1&uniqueTimestamp=2016202210414'
-ALBUMLISTURL = r'http://photo.renren.com/photo/%s/albumlist/v7?showAll=1#'
+ALBUMLISTURL = r'http://photo.renren.com/photo/%s/albumlist/v7?limit=999&showAll=1#'
 ALBUMURL = r'http://photo.renren.com/photo/%s/album-%s/v7'
 PHOTOSURL = r'http://photo.renren.com/photo/%s/photo-%s/v7'
 BLOGLISTURL = r'http://blog.renren.com/blog/%s/blogs?'

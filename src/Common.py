@@ -13,6 +13,20 @@ def generateJson(rawContent):
     #所以用单引号之前有没有“=”来判断是否需要转换，具体步骤见如下循环
     #"title":"<img src='http://a.xnimg.cn/imgpro/icons/statusface/zongzi.gif' alt='粽子'  />高铁上拣韭菜。。。\n"
 #     content = content.replace("'",'"')
+
+    #可以将以下代码修改后（！）用于删除照片描述中的单引号"'"字符以避免错误
+    '''
+    content = ''
+    i = 0
+    j = tempContent.find('word')
+    while j!=-1:
+        content += tempContent[i:j+9]
+        content += '^'
+        i = j + 10
+        j = tempContent.find('valentine', i)
+    content += tempContent[i:]
+    '''
+
     newContent = ''
     i= -1
     for k in range(0,len(content)):

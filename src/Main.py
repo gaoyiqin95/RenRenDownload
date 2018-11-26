@@ -54,7 +54,7 @@ def Main():
     lonelyMan.login()
     userID = lonelyMan.getUserID()
 
-    checkPaths(userID)
+    #checkPaths(userID)
 
     for index in range(len(config.ownerID)):
         work(userID, lonelyMan, index)
